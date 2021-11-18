@@ -41,6 +41,7 @@ def start():
     y, x = 0, 0  # 초기 뱀 위치
     visited = deque([[y, x]])  # 방문 위치
     arr[y][x] = 2
+
     while True:
         y, x = y + dy[direction], x + dx[direction]
         if 0 <= y < N and 0 <= x < N and arr[y][x] != 2:
@@ -49,6 +50,7 @@ def start():
                 arr[temp_y][temp_x] = 0  # 꼬리 제거
             arr[y][x] = 2
             visited.append([y, x])
+
             if time in times.keys():
                 direction = change(direction, times[time])
             time += 1
@@ -62,9 +64,11 @@ if __name__ == "__main__":
     N = int(input())
     K = int(input())
     arr = [[0] * N for _ in range(N)]
+
     for _ in range(K):
         a, b = map(int, input().split())
         arr[a - 1][b - 1] = 1  # 사과 저장
+        
     L = int(input())
     times = {}
     for i in range(L):
